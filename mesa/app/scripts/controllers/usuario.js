@@ -14,9 +14,8 @@ angular.module('mesaApp')
       
         $scope.buscar = function () {
             
-            //var url = 'http://192.168.1.102:8080/MABackend/api/usuarios/buscarLikeNombre?nombre='+$scope.nombre+'&callback=JSON_CALLBACK';
-            
-            Servicios.getUsuarios().then(
+                
+            Servicios.getUsuarios($scope.nombre).then(
                         function (response){
                            $scope.usuarios = response.data; 
                         },
