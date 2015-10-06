@@ -11,13 +11,14 @@
 angular
   .module('mesaApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ui.grid'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
+        templateUrl: 'views/usuario.html',
+        controller: 'UsuarioCtrl',
       })
       .when('/about', {
         templateUrl: 'views/about.html',
