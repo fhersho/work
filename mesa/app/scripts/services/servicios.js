@@ -14,6 +14,7 @@ angular.module('mesaApp')
         return {
             getUsuarios : function (){
                 var url = 'http://localhost:8080/prueba/datos.json?&callback=JSON_CALLBACK';
+                $http.defaults.headers.jsonp = { 'Accept' : 'application/json'};
                 return $http.jsonp(url);
             }
         };
