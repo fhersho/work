@@ -11,7 +11,8 @@
 angular
   .module('mesaApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ui.grid'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -20,8 +21,8 @@ angular
         controller: 'UsuarioCtrl',
       })
       .when('/about', {
-        templateUrl: 'views/circulo.html',
-        controller: 'CirculoCtrl',
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
       })
       .otherwise({
         redirectTo: '/'

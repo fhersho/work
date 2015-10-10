@@ -9,19 +9,21 @@
  */
 angular.module('mesaApp')
 
-    .factory('Servicios', function ($http) {
-        
-        return {
-            getUsuarios : function (nombre){
-                //var url = 'http://192.168.1.102:8080/MABackend/api/usuarios/buscarLikeNombre?nombre='+nombre+'&callback=JSON_CALLBACK';
-                //var url = 'http://localhost:8080/MABackend/api/usuarios/buscarLikeNombre?nombre='+nombre+'&callback=JSON_CALLBACK';
-                var url = 'http://localhost:8080/MABackend/api/usuarios/buscarLikeNombre?callback=JSON_CALLBACK&nombre='+nombre;
-                //var url = 'http://localhost:9000/datos.json';
-                return $http.jsonp(url);
-                
-                
-            }
-        };
-    }
+    .factory('Usuario', function ($resource) {
+        var url = 'http://localhost:8080/MABackend/api/usuarios/buscarLikeNombre?nombre=:nombre';
+        return $resource(url,{},{
+            buscarLikeNombre:{method:'GET', isArray:true}
+        })
 
-);
+    })
+    
+    .factory('Circulo', function ($resource) {
+        var url = 'http://localhost:8080/MABackend/api/circulos/todos';
+        return $resource(url,{},{
+            buscarCirculos:{method:'GET', isArray:true}
+        })
+
+    });
+    
+    
+    

@@ -1,0 +1,30 @@
+<div class="input-group">
+    <span class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+    </span>
+    <input type="text" class="form-control" ng-model="buscar" placeholder="Buscar circulo"/>
+</div>  
+
+<hr>
+
+<div>
+    <table class="table table-striped table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Fecha prod.</th>
+                <th>Activo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="circulo in circulos | filter:buscar">
+                <td>{{circulo.id}}</td>
+                <td>{{circulo.nombre}}</td>
+                <td>{{circulo.fechaProduccion | date : 'dd/MM/yyyy'}}</td>
+                <td>{{circulo.activo}}</td>
+            </tr>
+        </tbody>
+        
+    </table>
+</div>
