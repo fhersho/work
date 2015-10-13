@@ -8,17 +8,16 @@
  * Controller of the mesaApp
  */
 angular.module('mesaApp')
-  .controller('UsuarioCtrl', function ($rootScope,$scope,Usuario) {
+  .controller('UsuarioCtrl', function ($scope,Usuario) {
       
         $scope.buscar = function () {
-            
-        $scope.usuarios = Usuario.buscarLikeNombre({nombre:$scope.nombre},
-        function(data){
-            $scope.usuarios = data;
-        },function(error){
-            alert("Error: " + error.data);
-            $rootScope.mensajeError = error.data;
-        });    
+            $scope.$emit('LOAD');
+            $scope.usuarios = Usuario.buscarLikeNombre({nombre:$scope.nombre},
+                function(data){
+                    $scope.usuarios = data;
+                },function(error){
+                    bootbox.alert("<strong>Error: </strong>" + error.data);
+                });    
             
         };
   });

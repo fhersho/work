@@ -9,13 +9,15 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="mesaApp">
+  <body ng-app="mesaApp" ng-controller="appController">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -39,9 +41,10 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Buscar usuario</a></li>
-              <li><a ng-href="#/about">Buscar Circulo</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li ng-class="{active : isActiveMenu('/usuarios')}"><a href="#/usuarios">Buscar usuario</a></li>
+              <li ng-class="{active : isActiveMenu('/circulos')}"><a ng-href="#/circulos">Buscar Circulo</a></li>
+              <li ng-class="{active : isActiveMenu('/mapa')}"><a ng-href="#/mapa">Mapa</a></li>
+              <li ng-class="{active : isActiveMenu('/mapa2')}"><a ng-href="#/mapa2">Mapa 2</a></li>
             </ul>
           </div>
         </div>
@@ -49,11 +52,8 @@
     </div>
 
     <div class="container">
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Mensaje: </strong>{{mensajeError}}
+        <div ng-view="">
         </div>
-        <div ng-view=""></div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -74,6 +74,11 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/bootbox.js/bootbox.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -81,7 +86,10 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/usuario.js"></script>
     <script src="scripts/controllers/circulo.js"></script>
+    <script src="scripts/controllers/mapa.js"></script>
+    <script src="scripts/controllers/mapa2.js"></script>
     <script src="scripts/services/servicios.js"></script>
+    
     <!-- endbuild -->
 </body>
 </html>

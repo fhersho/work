@@ -13,7 +13,8 @@ angular.module('mesaApp')
     $scope.circulos = Circulo.buscarCirculos(
         function(data){
             $scope.usuarios = data;
-        },function(data){
-            console.log('ERRR');
+        },function(error){
+            bootbox.alert("<strong>Error: </strong>" + error.data);
         });    
+        
   });
